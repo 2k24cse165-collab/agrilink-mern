@@ -1,0 +1,27 @@
+{
+  "name": "agrilink",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AgriLink — MERN marketplace connecting farmers and buyers (listings, orders, commission, analytics, subscriptions).",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "install:all": "npm install --workspace server --workspace client && npm install",
+    "dev:server": "npm --workspace server run dev",
+    "dev:client": "npm --workspace client run dev",
+    "dev": "concurrently -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "start:server": "npm --workspace server start",
+    "build:client": "npm --workspace client run build",
+    "seed:admin": "npm --workspace server run seed:admin",
+    "lint": "eslint server/src client/src --ext .js,.jsx"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
